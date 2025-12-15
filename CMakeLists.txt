@@ -16,19 +16,16 @@ if(CMAKE_PROJECT_NAME STREQUAL RootFormatter)
     set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
     find_package(Boost CONFIG REQUIRED)
-    # Boost settings
-    #set(Boost_USE_STATIC_LIBS        ON)  # only find static libs
-    #set(Boost_USE_DEBUG_LIBS        OFF)  # ignore debug libs and
-    #set(Boost_USE_RELEASE_LIBS       ON)  # only find release libs
-    #set(Boost_USE_MULTITHREADED      ON)
-    #set(Boost_USE_STATIC_RUNTIME     ON)  # link Boost Static libraries
+    message(STATUS "Boost found: ${Boost_VERSION}")
 
     find_package(spdlog CONFIG REQUIRED)
-    find_package(unofficial-tree-sitter CONFIG REQUIRED)
+    message(STATUS "spdlog found: ${spdlog_VERSION}")
 
+    find_package(GTest CONFIG REQUIRED)
+    message(STATUS "GTest found: ${GTest_VERSION}")
 endif()
 
 
 add_subdirectory(RootFormatterLib)
 add_subdirectory(RootFormatter)
-#add_subdirectory(RootFormatterTests)
+add_subdirectory(RootFormatterTests)
