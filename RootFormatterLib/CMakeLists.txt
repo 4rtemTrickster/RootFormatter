@@ -1,3 +1,29 @@
+include(FetchContent)
+
+FetchContent_Declare(
+    tree_sitter
+    GIT_REPOSITORY https://github.com/tree-sitter/tree-sitter.git
+    GIT_TAG v0.20.8
+)
+
+FetchContent_Declare(
+    tree_sitter_cpp
+    GIT_REPOSITORY https://github.com/tree-sitter/tree-sitter-cpp.git
+    GIT_TAG v0.20.0
+)
+
+FetchContent_MakeAvailable(tree_sitter tree_sitter_cpp)
+
+add_library(tree_sitter_cpp_lib STATIC
+    ${tree_sitter_cpp_SOURCE_DIR}/src/parser.c
+    ${tree_sitter_cpp_SOURCE_DIR}/src/scanner.cc
+)
+
+target_include_directories(tree_sitter_cpp_lib PUBLIC
+    ${tree_sitter_SOURCE_DIR}/lib/include
+    ${tree_sitter_cpp_SOURCE_DIR}/src
+)
+
 add_library(RootFormatterLib
 
     src/Logger/Logger.h
@@ -13,21 +39,14 @@ add_library(RootFormatterLib
     src/TS/tsexp.cpp
 )
 
-target_include_directories(RootFormatterLib PRIVATE
+target_include_directories(RootFormatterLib PUBLIC
     src
-    ../dep/tree-sitter-cpp/bindings/c/
-    #${Boost_INCLUDE_DIRS}
 )
 
 target_link_libraries(RootFormatterLib
     spdlog::spdlog
-    unofficial::tree-sitter::tree-sitter
-    tree-sitter-cpp
     Boost::boost
+    tree_sitter_cpp_lib
 )
 
-add_dependencies(RootFormatterLib tree-sitter-cpp Boost::boost)
-
-include(../cmake/tools.cmake)
-
-#copy_dlls(RootFormatter)
+add_dependencies(RootFormatterLib Boost::boost)

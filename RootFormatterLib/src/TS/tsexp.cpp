@@ -2,6 +2,7 @@
 
 #include "TS/Types.h"
 #include "Text/Text.h"
+#include "tree_sitter/parser.h"
 
 #include <boost/range/algorithm/replace.hpp>
 #include <cstddef>
@@ -9,8 +10,10 @@
 #include <iostream>
 #include <ostream>
 #include <string>
-#include <tree-sitter-cpp.h>
 #include <tree_sitter/api.h>
+
+extern "C" TSLanguage* tree_sitter_cpp();
+
 
 void print_tree(TSNode node, const std::string& source, int depth = 0)
 {

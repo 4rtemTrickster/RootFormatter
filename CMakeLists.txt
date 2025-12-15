@@ -5,6 +5,7 @@ project(RootFormatter
     LANGUAGES CXX
 )
 
+
 if(CMAKE_PROJECT_NAME STREQUAL RootFormatter)
 
     set(CMAKE_CXX_STANDARD 20)
@@ -27,6 +28,7 @@ if(CMAKE_PROJECT_NAME STREQUAL RootFormatter)
 
 endif()
 
+
 add_subdirectory(RootFormatterLib)
+add_subdirectory(RootFormatter)
 #add_subdirectory(RootFormatterTests)
-add_subdirectory(dep/tree-sitter-cpp)

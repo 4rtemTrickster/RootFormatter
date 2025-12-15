@@ -6,7 +6,7 @@
 namespace TS
 {
 
-class TreeSitterDeliter
+struct TreeSitterDeliter
 {
     void operator () (TSParser* parser) const
     {
