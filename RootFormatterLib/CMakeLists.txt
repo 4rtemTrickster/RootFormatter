@@ -40,6 +40,9 @@ add_library(RootFormatterLib
 
     src/Tools/Tools.h
     src/Tools/Tools.cpp
+
+    src/Formatter/Formatter.h
+    src/Formatter/Formatter.cpp
 )
 
 target_include_directories(RootFormatterLib PUBLIC
