@@ -1,8 +1,20 @@
 #include <gtest/gtest.h>
 
-#include "TS/Types.h"
+#include "Formatter/Formatter.h"
 
 TEST(SimpleTest, base)
 {
-    EXPECT_EQ(7*6, 42);
+    Formatter frm;
+
+    std::string before = R"(#include <iostream>
+// blabla
+int main() {
+  std::cout << "Hello, World!" << std::endl;
+  return 0;
 }
+)";
+    std::string after = frm.format(before);
+
+    ASSERT_EQ(before, after);
+}
+

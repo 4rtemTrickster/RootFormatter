@@ -35,15 +35,18 @@ add_library(RootFormatterLib
     src/Text/Text.cpp
     src/Text/Text.h
 
-    src/TS/tsexp.h
-    src/TS/tsexp.cpp
+    src/TS/Types.h
+    src/TS/Types.cpp
+
+    src/Tools/Tools.h
+    src/Tools/Tools.cpp
 )
 
 target_include_directories(RootFormatterLib PUBLIC
     src
 )
 
-target_link_libraries(RootFormatterLib
+target_link_libraries(RootFormatterLib PUBLIC
     spdlog::spdlog
     Boost::boost
     tree_sitter_cpp_lib
