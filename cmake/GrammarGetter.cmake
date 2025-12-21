@@ -7,7 +7,7 @@ function(add_grammar_from_repo NAME REPO VERSION)
   #   DOWNLOAD_ONLY YES
   # )
 
-  if ("${${NAME}_ADDED}")
+  ##if ("${${NAME}_ADDED}")
     add_library(${NAME} STATIC)
 
     file(GLOB maybe_scanner "${${NAME}_SOURCE_DIR}/src/scanner.c")
@@ -31,6 +31,6 @@ function(add_grammar_from_repo NAME REPO VERSION)
 
     set_target_properties(${NAME} PROPERTIES LINKER_LANGUAGE CXX)
 
-  endif()
+  ##endif()
 endfunction(add_grammar_from_repo)
 

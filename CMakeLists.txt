@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.11...3.30)
+cmake_minimum_required(VERSION 3.13)
 
 project(RootFormatter
     VERSION 0.1
@@ -14,6 +14,9 @@ if(CMAKE_PROJECT_NAME STREQUAL RootFormatter)
     set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
 
     set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+
+    find_package(unofficial-tree-sitter CONFIG REQUIRED)
+    message(STATUS "unofficial-tree-sitter found: ${unofficial-tree-sitter_VERSION}")
 
     find_package(Boost CONFIG REQUIRED)
     message(STATUS "Boost found: ${Boost_VERSION}")
