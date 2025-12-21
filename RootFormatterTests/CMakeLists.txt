@@ -5,7 +5,6 @@ add_executable(RootFormatterTests
 target_link_libraries(RootFormatterTests
     GTest::gtest
     GTest::gtest_main
-    tree_sitter_cpp_lib
     RootFormatterLib
     )
 
