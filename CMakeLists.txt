@@ -32,3 +32,5 @@ endif()
 add_subdirectory(RootFormatterLib)
 add_subdirectory(RootFormatter)
 add_subdirectory(RootFormatterTests)
+add_subdirectory(dep/tree-sitter-cpp)
+
