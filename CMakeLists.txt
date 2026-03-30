@@ -2,9 +2,21 @@ cmake_minimum_required(VERSION 3.13)
 
 project(RootFormatter
     VERSION 0.1
-    LANGUAGES CXX
+    LANGUAGES CXX C
 )
 
+include(cmake/CPM.cmake)
+
+CPMAddPackage(
+    NAME cpp-tree-sitter
+    GIT_REPOSITORY https://github.com/nsumner/cpp-tree-sitter.git
+    GIT_TAG v0.0.3
+)
+
+add_grammar_from_repo(tree-sitter-cpp
+    https://github.com/tree-sitter/tree-sitter-cpp
+    0.23.4
+)
 
 if(CMAKE_PROJECT_NAME STREQUAL RootFormatter)
 
@@ -14,9 +26,6 @@ if(CMAKE_PROJECT_NAME STREQUAL RootFormatter)
     set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
 
     set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-
-    find_package(unofficial-tree-sitter CONFIG REQUIRED)
-    message(STATUS "unofficial-tree-sitter found: ${unofficial-tree-sitter_VERSION}")
 
     find_package(Boost CONFIG REQUIRED)
     message(STATUS "Boost found: ${Boost_VERSION}")
@@ -28,9 +37,6 @@ if(CMAKE_PROJECT_NAME STREQUAL RootFormatter)
     message(STATUS "GTest found: ${GTest_VERSION}")
 endif()
 
-
 add_subdirectory(RootFormatterLib)
 add_subdirectory(RootFormatter)
 add_subdirectory(RootFormatterTests)
-add_subdirectory(dep/tree-sitter-cpp)
-

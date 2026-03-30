@@ -1,7 +1,6 @@
 #pragma once
 
 #include <memory>
-
 #include <tree_sitter/api.h>
 
 namespace TS

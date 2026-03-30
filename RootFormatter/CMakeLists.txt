@@ -8,4 +8,4 @@ target_include_directories(RootFormatter PUBLIC
 
 target_link_libraries(RootFormatter PUBLIC
     RootFormatterLib
-    )
+)

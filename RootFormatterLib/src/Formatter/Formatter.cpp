@@ -18,7 +18,7 @@ try
           m_parser.get()
         , nullptr // old_tree
         , source_code.c_str()
-        , source_code.length()
+        , static_cast<uint32_t>(source_code.length())
     ));
 
     if (nullptr == tree)
